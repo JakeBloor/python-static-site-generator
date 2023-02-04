@@ -1,11 +1,11 @@
 import re
 
-from yaml import load, Fullloader
 from collections.abc import Mapping
+from yaml import load, Fullloader
 
-class content(Mapping()):
-    __delimeter = "^(?:-|\+){3}\s*$"
-    __regex = re.compile(__delimeter,re.MULTILINE)
+class Content(Mapping):
+    __delimiter = r"^(?:-|\+){3}\s*$"
+    __regex = re.compile(__delimiter, re.MULTILINE)
     
     @classmethod
     def load(cls, string):
@@ -27,7 +27,7 @@ class content(Mapping()):
     
     @type.setter
     def type(self, type):
-        self.date["type"] = type
+        self.data["type"] = type
         
     def __getitem__(self, key):
         return self.data[key]
